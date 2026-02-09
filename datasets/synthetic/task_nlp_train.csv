@@ -1,0 +1,301 @@
+text,category
+implement api,DEVELOPMENT
+progress implement api,DEVELOPMENT
+sedang implement api untuk klien,DEVELOPMENT
+lanjut implement api secepatnya,DEVELOPMENT
+lanjut implement api hari ini,DEVELOPMENT
+lanjut implement api secepatnya,DEVELOPMENT
+buat backend,DEVELOPMENT
+buat backend pending,DEVELOPMENT
+tolong buat backend untuk klien,DEVELOPMENT
+sedang buat backend,DEVELOPMENT
+selesai buat backend pending,DEVELOPMENT
+tolong buat backend,DEVELOPMENT
+setup database,DEVELOPMENT
+progress setup database pending,DEVELOPMENT
+progress setup database secepatnya,DEVELOPMENT
+progress setup database secepatnya,DEVELOPMENT
+sedang setup database di production,DEVELOPMENT
+tolong setup database hari ini,DEVELOPMENT
+refactor code,DEVELOPMENT
+selesai refactor code hari ini,DEVELOPMENT
+refactor code,DEVELOPMENT
+sedang refactor code secepatnya,DEVELOPMENT
+refactor code secepatnya,DEVELOPMENT
+lanjut refactor code hari ini,DEVELOPMENT
+integrasi payment gateway,DEVELOPMENT
+selesai integrasi payment gateway,DEVELOPMENT
+integrasi payment gateway secepatnya,DEVELOPMENT
+sedang integrasi payment gateway di production,DEVELOPMENT
+sedang integrasi payment gateway di production,DEVELOPMENT
+sedang integrasi payment gateway pending,DEVELOPMENT
+create microservice,DEVELOPMENT
+lanjut create microservice di production,DEVELOPMENT
+lanjut create microservice pending,DEVELOPMENT
+tolong create microservice pending,DEVELOPMENT
+lanjut create microservice untuk klien,DEVELOPMENT
+tolong create microservice untuk klien,DEVELOPMENT
+coding fitur login,DEVELOPMENT
+lanjut coding fitur login di production,DEVELOPMENT
+tolong coding fitur login,DEVELOPMENT
+progress coding fitur login hari ini,DEVELOPMENT
+selesai coding fitur login untuk klien,DEVELOPMENT
+selesai coding fitur login untuk klien,DEVELOPMENT
+update schema sql,DEVELOPMENT
+tolong update schema sql hari ini,DEVELOPMENT
+progress update schema sql hari ini,DEVELOPMENT
+update schema sql pending,DEVELOPMENT
+progress update schema sql,DEVELOPMENT
+sedang update schema sql di production,DEVELOPMENT
+optimize query,DEVELOPMENT
+sedang optimize query untuk klien,DEVELOPMENT
+optimize query pending,DEVELOPMENT
+sedang optimize query untuk klien,DEVELOPMENT
+selesai optimize query hari ini,DEVELOPMENT
+optimize query,DEVELOPMENT
+develop frontend dashboard,DEVELOPMENT
+tolong develop frontend dashboard secepatnya,DEVELOPMENT
+sedang develop frontend dashboard di production,DEVELOPMENT
+progress develop frontend dashboard secepatnya,DEVELOPMENT
+sedang develop frontend dashboard pending,DEVELOPMENT
+lanjut develop frontend dashboard di production,DEVELOPMENT
+fix bug,BUGFIX
+tolong fix bug secepatnya,BUGFIX
+fix bug,BUGFIX
+sedang fix bug untuk klien,BUGFIX
+lanjut fix bug di production,BUGFIX
+tolong fix bug di production,BUGFIX
+perbaiki error,BUGFIX
+selesai perbaiki error di production,BUGFIX
+progress perbaiki error hari ini,BUGFIX
+tolong perbaiki error,BUGFIX
+perbaiki error secepatnya,BUGFIX
+perbaiki error secepatnya,BUGFIX
+debug issue,BUGFIX
+selesai debug issue untuk klien,BUGFIX
+tolong debug issue untuk klien,BUGFIX
+progress debug issue hari ini,BUGFIX
+progress debug issue secepatnya,BUGFIX
+progress debug issue hari ini,BUGFIX
+resolve crash,BUGFIX
+sedang resolve crash untuk klien,BUGFIX
+tolong resolve crash,BUGFIX
+resolve crash hari ini,BUGFIX
+progress resolve crash untuk klien,BUGFIX
+sedang resolve crash hari ini,BUGFIX
+hotfix production,BUGFIX
+progress hotfix production di production,BUGFIX
+tolong hotfix production untuk klien,BUGFIX
+sedang hotfix production di production,BUGFIX
+hotfix production di production,BUGFIX
+sedang hotfix production secepatnya,BUGFIX
+patch security hole,BUGFIX
+progress patch security hole,BUGFIX
+selesai patch security hole secepatnya,BUGFIX
+progress patch security hole di production,BUGFIX
+tolong patch security hole di production,BUGFIX
+selesai patch security hole,BUGFIX
+koreksi typo,BUGFIX
+lanjut koreksi typo untuk klien,BUGFIX
+sedang koreksi typo di production,BUGFIX
+koreksi typo secepatnya,BUGFIX
+lanjut koreksi typo hari ini,BUGFIX
+tolong koreksi typo pending,BUGFIX
+handling exception,BUGFIX
+selesai handling exception pending,BUGFIX
+lanjut handling exception untuk klien,BUGFIX
+progress handling exception,BUGFIX
+lanjut handling exception secepatnya,BUGFIX
+lanjut handling exception pending,BUGFIX
+troubleshoot server,BUGFIX
+sedang troubleshoot server untuk klien,BUGFIX
+lanjut troubleshoot server pending,BUGFIX
+troubleshoot server hari ini,BUGFIX
+tolong troubleshoot server untuk klien,BUGFIX
+troubleshoot server pending,BUGFIX
+fix responsive layout,BUGFIX
+tolong fix responsive layout secepatnya,BUGFIX
+tolong fix responsive layout di production,BUGFIX
+sedang fix responsive layout untuk klien,BUGFIX
+selesai fix responsive layout pending,BUGFIX
+progress fix responsive layout pending,BUGFIX
+daily standup,MEETING
+progress daily standup,MEETING
+sedang daily standup,MEETING
+tolong daily standup,MEETING
+progress daily standup,MEETING
+progress daily standup pending,MEETING
+meeting klien,MEETING
+lanjut meeting klien secepatnya,MEETING
+meeting klien untuk klien,MEETING
+sedang meeting klien di production,MEETING
+meeting klien secepatnya,MEETING
+sedang meeting klien secepatnya,MEETING
+diskusi requirement,MEETING
+lanjut diskusi requirement untuk klien,MEETING
+sedang diskusi requirement untuk klien,MEETING
+tolong diskusi requirement,MEETING
+selesai diskusi requirement pending,MEETING
+selesai diskusi requirement secepatnya,MEETING
+sprint planning,MEETING
+tolong sprint planning di production,MEETING
+progress sprint planning di production,MEETING
+sprint planning di production,MEETING
+progress sprint planning hari ini,MEETING
+sprint planning,MEETING
+brainstorming ide,MEETING
+tolong brainstorming ide untuk klien,MEETING
+sedang brainstorming ide di production,MEETING
+tolong brainstorming ide untuk klien,MEETING
+sedang brainstorming ide untuk klien,MEETING
+lanjut brainstorming ide,MEETING
+weekly sync,MEETING
+selesai weekly sync pending,MEETING
+tolong weekly sync pending,MEETING
+lanjut weekly sync,MEETING
+lanjut weekly sync di production,MEETING
+lanjut weekly sync di production,MEETING
+retrospective,MEETING
+sedang retrospective,MEETING
+retrospective,MEETING
+progress retrospective pending,MEETING
+progress retrospective hari ini,MEETING
+sedang retrospective secepatnya,MEETING
+presentasi progress,MEETING
+lanjut presentasi progress hari ini,MEETING
+tolong presentasi progress,MEETING
+lanjut presentasi progress hari ini,MEETING
+presentasi progress hari ini,MEETING
+presentasi progress secepatnya,MEETING
+call dengan vendor,MEETING
+call dengan vendor pending,MEETING
+progress call dengan vendor pending,MEETING
+sedang call dengan vendor secepatnya,MEETING
+sedang call dengan vendor secepatnya,MEETING
+lanjut call dengan vendor di production,MEETING
+koordinasi tim,MEETING
+progress koordinasi tim untuk klien,MEETING
+selesai koordinasi tim secepatnya,MEETING
+lanjut koordinasi tim hari ini,MEETING
+koordinasi tim hari ini,MEETING
+sedang koordinasi tim,MEETING
+buat mockup,DESIGN
+progress buat mockup di production,DESIGN
+lanjut buat mockup hari ini,DESIGN
+selesai buat mockup hari ini,DESIGN
+progress buat mockup di production,DESIGN
+sedang buat mockup pending,DESIGN
+design ui/ux,DESIGN
+lanjut design ui/ux pending,DESIGN
+selesai design ui/ux untuk klien,DESIGN
+tolong design ui/ux untuk klien,DESIGN
+design ui/ux hari ini,DESIGN
+tolong design ui/ux untuk klien,DESIGN
+export aset gambar,DESIGN
+sedang export aset gambar,DESIGN
+tolong export aset gambar di production,DESIGN
+tolong export aset gambar hari ini,DESIGN
+export aset gambar pending,DESIGN
+tolong export aset gambar di production,DESIGN
+revisi layout,DESIGN
+sedang revisi layout untuk klien,DESIGN
+revisi layout hari ini,DESIGN
+selesai revisi layout untuk klien,DESIGN
+lanjut revisi layout di production,DESIGN
+selesai revisi layout hari ini,DESIGN
+pilih palet warna,DESIGN
+sedang pilih palet warna di production,DESIGN
+sedang pilih palet warna hari ini,DESIGN
+tolong pilih palet warna hari ini,DESIGN
+tolong pilih palet warna secepatnya,DESIGN
+selesai pilih palet warna untuk klien,DESIGN
+design logo,DESIGN
+design logo pending,DESIGN
+design logo hari ini,DESIGN
+selesai design logo secepatnya,DESIGN
+sedang design logo pending,DESIGN
+design logo secepatnya,DESIGN
+wireframing,DESIGN
+tolong wireframing secepatnya,DESIGN
+sedang wireframing untuk klien,DESIGN
+sedang wireframing secepatnya,DESIGN
+sedang wireframing hari ini,DESIGN
+selesai wireframing untuk klien,DESIGN
+prototyping figma,DESIGN
+sedang prototyping figma pending,DESIGN
+lanjut prototyping figma untuk klien,DESIGN
+tolong prototyping figma di production,DESIGN
+lanjut prototyping figma secepatnya,DESIGN
+selesai prototyping figma pending,DESIGN
+update design system,DESIGN
+update design system untuk klien,DESIGN
+lanjut update design system untuk klien,DESIGN
+tolong update design system untuk klien,DESIGN
+update design system secepatnya,DESIGN
+lanjut update design system,DESIGN
+slicing design,DESIGN
+progress slicing design,DESIGN
+tolong slicing design pending,DESIGN
+sedang slicing design untuk klien,DESIGN
+progress slicing design pending,DESIGN
+slicing design,DESIGN
+deploy ke server,DEVOPS
+progress deploy ke server,DEVOPS
+progress deploy ke server di production,DEVOPS
+lanjut deploy ke server,DEVOPS
+sedang deploy ke server secepatnya,DEVOPS
+tolong deploy ke server untuk klien,DEVOPS
+setup ci/cd,DEVOPS
+setup ci/cd pending,DEVOPS
+selesai setup ci/cd secepatnya,DEVOPS
+progress setup ci/cd untuk klien,DEVOPS
+lanjut setup ci/cd,DEVOPS
+progress setup ci/cd hari ini,DEVOPS
+konfigurasi docker,DEVOPS
+sedang konfigurasi docker hari ini,DEVOPS
+selesai konfigurasi docker,DEVOPS
+tolong konfigurasi docker,DEVOPS
+lanjut konfigurasi docker pending,DEVOPS
+lanjut konfigurasi docker di production,DEVOPS
+monitoring log,DEVOPS
+lanjut monitoring log pending,DEVOPS
+monitoring log hari ini,DEVOPS
+tolong monitoring log pending,DEVOPS
+lanjut monitoring log,DEVOPS
+progress monitoring log secepatnya,DEVOPS
+backup database,DEVOPS
+sedang backup database hari ini,DEVOPS
+sedang backup database di production,DEVOPS
+backup database hari ini,DEVOPS
+backup database secepatnya,DEVOPS
+progress backup database hari ini,DEVOPS
+update sertifikat ssl,DEVOPS
+selesai update sertifikat ssl hari ini,DEVOPS
+tolong update sertifikat ssl hari ini,DEVOPS
+progress update sertifikat ssl untuk klien,DEVOPS
+lanjut update sertifikat ssl,DEVOPS
+update sertifikat ssl di production,DEVOPS
+manage aws instance,DEVOPS
+manage aws instance hari ini,DEVOPS
+manage aws instance hari ini,DEVOPS
+tolong manage aws instance di production,DEVOPS
+manage aws instance hari ini,DEVOPS
+tolong manage aws instance pending,DEVOPS
+skaling kubernetes,DEVOPS
+lanjut skaling kubernetes,DEVOPS
+skaling kubernetes di production,DEVOPS
+lanjut skaling kubernetes,DEVOPS
+sedang skaling kubernetes di production,DEVOPS
+selesai skaling kubernetes,DEVOPS
+cek penggunaan memori,DEVOPS
+lanjut cek penggunaan memori hari ini,DEVOPS
+cek penggunaan memori hari ini,DEVOPS
+lanjut cek penggunaan memori hari ini,DEVOPS
+tolong cek penggunaan memori secepatnya,DEVOPS
+sedang cek penggunaan memori,DEVOPS
+maintenance server,DEVOPS
+lanjut maintenance server,DEVOPS
+sedang maintenance server untuk klien,DEVOPS
+sedang maintenance server untuk klien,DEVOPS
+sedang maintenance server,DEVOPS
+lanjut maintenance server hari ini,DEVOPS
