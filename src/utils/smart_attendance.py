@@ -131,4 +131,4 @@ if __name__ == "__main__":
     
     # Skenario 2: Karyawan mencoba Absen
     print("\n--- MULAI CLOCK IN ---")
-    clock_in_attendance("EMP_001")
+    clock_in_attendance("EMP_001") 
