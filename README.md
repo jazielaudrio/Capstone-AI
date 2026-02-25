@@ -105,11 +105,7 @@ uvicorn src.scripts.api:app --reload
 * **Input**: `employee_id` (Form Data) dan `photo` (File Upload).
 * **Fungsi**: Memverifikasi wajah karyawan dengan database foto di folder `datasets/faces/`.
 
-*Daftar Import Lengkap*
-Untuk menjalankan proyek ini, Anda perlu menginstal library tersebut melalui pip:
 
-Bash
-pip install fastapi uvicorn pydantic pandas numpy joblib prophet deepface opencv-python matplotli
 
 ---
 
