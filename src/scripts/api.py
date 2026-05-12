@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
 import pandas as pd
@@ -15,6 +16,15 @@ sys.path.append(BASE_DIR) # Agar bisa import dari folder src/
 
 # Inisialisasi Aplikasi FastAPI
 app = FastAPI(title="Capstone Master AI API", version="1.0", description="API All-in-One untuk seluruh fitur AI Capstone")
+
+# Konfigurasi CORS agar frontend HTML bisa terhubung
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Mengizinkan semua origin (untuk testing lokal)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ==========================================
 # 1. LOAD MODELS & MODULES (Aman dari Crash)
@@ -62,14 +72,31 @@ except ImportError:
 class TaskRequest(BaseModel):
     task_text: str
 
+class TaskResponse(BaseModel):
+    task_text: str
+    category: str
+    confidence: float
+
 class AnomalyRequest(BaseModel):
     complexity: int
     hist_avg: float
     skill: int
     duration: float
 
+class AnomalyResponse(BaseModel):
+    status: str
+    is_anomaly: bool
+
 class ChatRequest(BaseModel):
     user_message: str
+
+class ChatResponse(BaseModel):
+    reply: str
+
+class AttendanceResponse(BaseModel):
+    employee_id: str
+    status: str
+    accuracy: float
 
 
 # ==========================================
@@ -91,7 +118,7 @@ def read_root():
     }
 
 # --- FITUR 1: TASK CATEGORIZER ---
-@app.post("/api/v1/task/categorize", tags=["Task & NLP"])
+@app.post("/api/v1/task/categorize", response_model=TaskResponse, tags=["Task & NLP"])
 def predict_task(request: TaskRequest):
     if not task_model: raise HTTPException(status_code=500, detail="Task model is offline.")
     category = task_model.predict([request.task_text])[0]
@@ -103,7 +130,7 @@ def predict_task(request: TaskRequest):
     }
 
 # --- FITUR 2: TIMESHEET ANOMALY ---
-@app.post("/api/v1/timesheet/check-anomaly", tags=["Task & NLP"])
+@app.post("/api/v1/timesheet/check-anomaly", response_model=AnomalyResponse, tags=["Task & NLP"])
 def predict_anomaly(request: AnomalyRequest):
     if not anomaly_model: raise HTTPException(status_code=500, detail="Anomaly model is offline.")
     ratio = request.duration / request.hist_avg
@@ -116,7 +143,7 @@ def predict_anomaly(request: AnomalyRequest):
     }
 
 # --- FITUR 3: FINANCIAL CHATBOT ---
-@app.post("/api/v1/finance/chat", tags=["Finance AI"])
+@app.post("/api/v1/finance/chat", response_model=ChatResponse, tags=["Finance AI"])
 def chat_finance(request: ChatRequest):
     if not chatbot_ready: raise HTTPException(status_code=500, detail="Chatbot module is offline.")
     jawaban = bot_instance.chat(request.user_message)
@@ -136,7 +163,7 @@ def get_forecast(project_id: str):
     return result
 
 # --- FITUR 5: SMART ATTENDANCE (Upload Foto) ---
-@app.post("/api/v1/attendance/verify", tags=["Smart Attendance"])
+@app.post("/api/v1/attendance/verify", response_model=AttendanceResponse, tags=["Smart Attendance"])
 async def verify_attendance(employee_id: str = Form(...), photo: UploadFile = File(...)):
     """Mengirim file gambar (selfie) untuk dicocokkan dengan database."""
     if not face_ready: raise HTTPException(status_code=500, detail="DeepFace is offline.")
