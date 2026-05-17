@@ -113,12 +113,12 @@ def run_analysis(pid, mode="SINGLE"):
         
         result = {
             "project": cfg['name'],
-            "budget": budget,
-            "spent": spent,
-            "pct": (spent/budget)*100,
+            "budget": int(budget),
+            "spent": float(spent),
+            "pct": float((spent/budget)*100),
             "status": status,
-            "runway": runway,
-            "forecast_30d": next_month,
+            "runway": runway.strftime('%Y-%m-%d') if pd.notna(runway) else None,
+            "forecast_30d": float(next_month),
             "explanation": explanation
         }
 
@@ -145,7 +145,7 @@ def print_report(res):
     print(f"  Status     : {res['status']}")
     
     if res['runway']:
-        print(f"  Runway End : {res['runway'].strftime('%Y-%m-%d')}")
+        print(f"  Runway End : {res['runway']}")
     elif res['status'] == "CRITICAL_OVER":
         print(f"  Runway End : ALREADY EXCEEDED")
     else:

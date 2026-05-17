@@ -26,7 +26,7 @@ class FinancialChatbot:
     def __init__(self, df):
         self.df = df
         self.api_url = "http://localhost:11434/api/generate"
-        self.model = "llama3"
+        self.model = "qwen2:0.5b"
         
         # Prepare context data as string for the LLM
         self.context_data = self._prepare_context()

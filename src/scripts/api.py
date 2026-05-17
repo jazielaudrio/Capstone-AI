@@ -133,7 +133,9 @@ def predict_task(request: TaskRequest):
 @app.post("/api/v1/timesheet/check-anomaly", response_model=AnomalyResponse, tags=["Task & NLP"])
 def predict_anomaly(request: AnomalyRequest):
     if not anomaly_model: raise HTTPException(status_code=500, detail="Anomaly model is offline.")
-    ratio = request.duration / request.hist_avg
+    
+    ratio = request.duration / request.hist_avg if request.hist_avg else 0.0
+    
     input_data = pd.DataFrame([[request.complexity, request.hist_avg, request.skill, request.duration, ratio]], 
                               columns=['complexity', 'hist_avg', 'skill', 'duration', 'deviation_ratio'])
     pred = anomaly_model.predict(input_data)[0]
