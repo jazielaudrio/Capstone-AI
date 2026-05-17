@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, UploadFile, File, Form
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
@@ -116,6 +116,10 @@ def read_root():
         },
         "docs": "Kunjungi http://127.0.0.1:8000/docs untuk testing."
     }
+
+@app.get('/favicon.ico', include_in_schema=False)
+async def favicon():
+    return Response(content="", media_type="image/x-icon")
 
 # --- FITUR 1: TASK CATEGORIZER ---
 @app.post("/api/v1/task/categorize", response_model=TaskResponse, tags=["Task & NLP"])
