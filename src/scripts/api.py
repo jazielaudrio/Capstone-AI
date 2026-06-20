@@ -50,7 +50,7 @@ except ImportError:
 
 # --- C. Budget Forecast ---
 try:
-    from src.core.forecast_engine import run_analysis
+    from src.core.forecast_engine import run_analysis, run_dynamic_analysis
     forecast_ready = True
 except ImportError:
     forecast_ready = False
@@ -105,6 +105,17 @@ class ComplexityRequest(BaseModel):
 class ComplexityResponse(BaseModel):
     recommended_complexity: int
 
+from typing import List
+
+class DailyData(BaseModel):
+    ds: str
+    y: float
+    headcount: int
+
+class ForecastDynamicRequest(BaseModel):
+    project_id: int
+    total_budget: float
+    historical_data: List[DailyData]
 
 # ==========================================
 # 3. ENDPOINTS API
@@ -180,6 +191,17 @@ def get_forecast(project_id: str):
     result = run_analysis(project_id.upper(), mode="PORTFOLIO")
     if result is None:
         raise HTTPException(status_code=404, detail="Data project tidak ditemukan atau model gagal.")
+    
+    return result
+
+@app.post("/api/v1/finance/forecast-dynamic", tags=["Finance AI"])
+def get_forecast_dynamic(request: ForecastDynamicRequest):
+    if not forecast_ready: raise HTTPException(status_code=500, detail="Forecast module is offline.")
+    
+    # Pass JSON to forecast engine
+    result = run_dynamic_analysis(request.project_id, request.total_budget, request.historical_data)
+    if result is None:
+        raise HTTPException(status_code=400, detail="Gagal menjalankan forecast. Data mungkin kurang (butuh min 5 hari histori).")
     
     return result
 

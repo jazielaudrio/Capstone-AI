@@ -135,6 +135,74 @@ def run_analysis(pid, mode="SINGLE"):
         print(f"[ERR] {e}")
         return None
 
+def run_dynamic_analysis(pid, total_budget, historical_data_dicts):
+    try:
+        if not historical_data_dicts:
+            raise ValueError("[ERR] No historical data provided")
+
+        # Convert to DataFrame
+        # dict(item) ensures we convert pydantic models or dicts safely
+        df = pd.DataFrame([dict(item) for item in historical_data_dicts])
+        if df.empty or len(df) < 5:
+            raise ValueError("[ERR] Not enough historical data for Prophet (minimum 5 days)")
+            
+        df['ds'] = pd.to_datetime(df['ds'])
+        
+        # Train without predefined synthetic holidays
+        model = train(df, holidays=None)
+        
+        # Cross Validation logic that doesn't crash on small data
+        days_of_data = (df['ds'].max() - df['ds'].min()).days
+        mape = 15.0 # default fallback
+        
+        if days_of_data >= 30:
+            try:
+                cv = cross_validation(model, initial=f'{int(days_of_data*0.6)} days', period='5 days', horizon='5 days', parallel="processes")
+                mape = performance_metrics(cv)['mape'].mean() * 100
+            except:
+                pass
+                
+        save_model(model, f"dynamic_{pid}", mape)
+        
+        # Forecast 90 days ahead
+        future = model.make_future_dataframe(periods=90)
+        future['headcount'] = df['headcount'].iloc[-1]
+        forecast = model.predict(future)
+        
+        # [F8] Runway Calculation
+        spent = float(df['y'].sum())
+        
+        if spent >= total_budget:
+            status = "CRITICAL_OVER"
+            runway = None
+        else:
+            future_fc = forecast[forecast['ds'] > df['ds'].max()].copy()
+            future_fc['cumsum'] = future_fc['yhat'].cumsum() + spent
+            over = future_fc[future_fc['cumsum'] >= total_budget]
+            runway = over.iloc[0]['ds'] if not over.empty else None
+            status = "WARNING" if runway else "SAFE"
+
+        # [F9] Result Preparation
+        next_month = float(forecast.tail(30)['yhat'].sum())
+        explanation = explain_forecast(forecast)
+        
+        result = {
+            "project": f"Project {pid}",
+            "budget": int(total_budget),
+            "spent": spent,
+            "pct": float((spent/total_budget)*100) if total_budget > 0 else 0,
+            "status": status,
+            "runway": runway.strftime('%Y-%m-%d') if pd.notna(runway) else None,
+            "forecast_30d": next_month,
+            "explanation": explanation
+        }
+
+        return result
+
+    except Exception as e:
+        print(f"[ERR Dynamic Forecast] {e}")
+        return None
+
 def print_report(res):
     print("\n" + "-"*60)
     print(f"REPORT: {res['project']}")
