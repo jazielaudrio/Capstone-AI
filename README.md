@@ -4,13 +4,14 @@ Aplikasi ini adalah platform AI All-in-One yang mengintegrasikan berbagai fitur 
 
 ## 🚀 Fitur Utama
 
-Aplikasi ini memiliki 5 modul utama:
+Aplikasi ini memiliki 6 modul utama:
 
 1. **Task Categorizer (NLP)**: Mengklasifikasikan teks tugas ke dalam kategori tertentu.
-2. **Timesheet Anomaly Detection**: Mendeteksi ketidakwajaran pada durasi kerja karyawan.
-3. **Financial Chatbot**: Asisten interaktif untuk menanyakan status kesehatan keuangan, biaya, dan margin proyek.
-4. **Budget Forecast**: Prediksi pengeluaran anggaran 90 hari ke depan menggunakan modul Prophet.
-5. **Smart Attendance**: Sistem absensi berbasis pengenalan wajah (*Face Recognition*) menggunakan DeepFace.
+2. **Task Complexity Recommender (NLP)**: Menganalisis judul dan deskripsi tugas untuk memberikan rekomendasi tingkat kerumitan (1-5).
+3. **Timesheet Anomaly Detection**: Mendeteksi ketidakwajaran pada durasi kerja karyawan.
+4. **Financial Chatbot**: Asisten interaktif untuk menanyakan status kesehatan keuangan, biaya, dan margin proyek.
+5. **Budget Forecast**: Prediksi pengeluaran anggaran 90 hari ke depan menggunakan modul Prophet.
+6. **Smart Attendance**: Sistem absensi berbasis pengenalan wajah (*Face Recognition*) menggunakan DeepFace.
 
 ---
 
@@ -31,7 +32,8 @@ Capstone-AI/
 │   ├── scripts/
 │   │   └── api.py              # Entry point FastAPI
 │   └── utils/
-│       └── financial_chatbot.py # Logika Chatbot Finansial
+│       ├── financial_chatbot.py      # Logika Chatbot Finansial
+│       └── complexity_recommender.py # Logika Rekomendasi Kompleksitas Tugas
 └── requirements.txt         # Daftar dependensi (perlu dibuat)
 
 ```
@@ -81,25 +83,31 @@ uvicorn src.scripts.api:app --reload
 * **Input**: `{"task_text": "string"}`
 * **Fungsi**: Memprediksi kategori dari teks tugas yang dimasukkan.
 
-### 2. Check Anomaly
+### 2. Task Complexity Recommender
+
+* **Endpoint**: `POST /api/v1/task/complexity-recommend`
+* **Input**: `{"title": "string", "description": "string"}`
+* **Fungsi**: Menganalisis teks judul dan deskripsi tugas untuk memberikan rekomendasi skor kompleksitas (1-5) berdasarkan panjang teks dan penggunaan kata kunci teknis.
+
+### 3. Check Anomaly
 
 * **Endpoint**: `POST /api/v1/timesheet/check-anomaly`
 * **Input**: JSON berisi `complexity`, `hist_avg`, `skill`, dan `duration`.
 * **Output**: Status `SAFE` atau `SUSPICIOUS`.
 
-### 3. Financial Chatbot
+### 4. Financial Chatbot
 
 * **Endpoint**: `POST /api/v1/finance/chat`
 * **Input**: `{"user_message": "Berapa pengeluaran project Alpha?"}`
 * **Fungsi**: Menjawab pertanyaan seputar biaya, margin, atau kesehatan proyek.
 
-### 4. Budget Forecast
+### 5. Budget Forecast
 
 * **Endpoint**: `GET /api/v1/finance/forecast/{project_id}`
 * **Parameter**: `project_id` (contoh: `PROJ_ALPHA`, `PROJ_BETA`).
 * **Fungsi**: Menghitung *Runway* (sisa waktu anggaran) dan prediksi biaya 30 hari ke depan.
 
-### 5. Smart Attendance
+### 6. Smart Attendance
 
 * **Endpoint**: `POST /api/v1/attendance/verify`
 * **Input**: `employee_id` (Form Data) dan `photo` (File Upload).

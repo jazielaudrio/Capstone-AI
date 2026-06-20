@@ -98,6 +98,13 @@ class AttendanceResponse(BaseModel):
     status: str
     accuracy: float
 
+class ComplexityRequest(BaseModel):
+    title: str
+    description: str
+
+class ComplexityResponse(BaseModel):
+    recommended_complexity: int
+
 
 # ==========================================
 # 3. ENDPOINTS API
@@ -132,6 +139,14 @@ def predict_task(request: TaskRequest):
         "category": category,
         "confidence": float(max(probs) * 100)
     }
+
+# --- FITUR 1B: TASK COMPLEXITY RECOMMENDER ---
+from src.utils.complexity_recommender import recommend_complexity
+
+@app.post("/api/v1/task/complexity-recommend", response_model=ComplexityResponse, tags=["Task & NLP"])
+def predict_complexity(request: ComplexityRequest):
+    score = recommend_complexity(request.title, request.description)
+    return {"recommended_complexity": score}
 
 # --- FITUR 2: TIMESHEET ANOMALY ---
 @app.post("/api/v1/timesheet/check-anomaly", response_model=AnomalyResponse, tags=["Task & NLP"])

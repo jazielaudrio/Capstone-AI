@@ -9,3 +9,6 @@ opencv-python
 matplotlib
 tensorflow
 plotly
+scikit-learn
+tf-keras
+python-multipart
