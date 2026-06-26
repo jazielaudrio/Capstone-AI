@@ -26,7 +26,7 @@ class FinancialChatbot:
     def __init__(self, df):
         self.df = df
         self.api_url = "http://localhost:11434/api/generate"
-        self.model = "qwen2:0.5b"
+        self.model = "qwen2.5-coder:7b"
         
         # Prepare context data as string for the LLM
         self.context_data = self._prepare_context()
@@ -58,15 +58,26 @@ class FinancialChatbot:
     # ==========================================
     # 3. ENGINE UTAMA CHATBOT (Ollama API)
     # ==========================================
-    def chat(self, user_input):
-        prompt = (
-            "Anda adalah AI Asisten Finansial. Gunakan data berikut untuk menjawab pertanyaan pengguna "
-            "dengan jelas, singkat, dan profesional dalam bahasa Indonesia.\n\n"
-            f"{self.context_data}\n\n"
+    def _build_prompt(self, context, user_input):
+        return (
+            "Anda adalah AI Asisten Finansial. Anda HANYA diizinkan menjawab pertanyaan yang relevan dengan data proyek, "
+            "finansial, timesheet, atau pengelolaan sistem yang diberikan. JANGAN PERNAH menjawab hal-hal "
+            "di luar konteks ini (contoh: pertanyaan tentang cuaca, memasak, presiden, atau topik umum lainnya). "
+            "Jika pengguna bertanya hal di luar batas tersebut, tolaklah dengan sopan dan jelaskan peran Anda.\n\n"
+            f"Konteks Data:\n{context}\n\n"
             f"Pertanyaan Pengguna: {user_input}\n"
-            "Jawaban:"
+            "Jawaban (Gunakan bahasa Indonesia, profesional, ringkas):"
         )
-        
+
+    def chat_with_context(self, user_input, custom_context):
+        prompt = self._build_prompt(custom_context, user_input)
+        return self._send_to_ollama(prompt)
+
+    def chat(self, user_input):
+        prompt = self._build_prompt(self.context_data, user_input)
+        return self._send_to_ollama(prompt)
+
+    def _send_to_ollama(self, prompt):
         payload = {
             "model": self.model,
             "prompt": prompt,
@@ -81,7 +92,7 @@ class FinancialChatbot:
             )
             with urllib.request.urlopen(req) as response:
                 result = json.loads(response.read().decode('utf-8'))
-                return result.get("response", "Maaf, format respons dari Llama tidak dikenali.")
+                return result.get("response", "Maaf, format respons dari model AI tidak dikenali.")
         except urllib.error.URLError as e:
             return f"Gagal menghubungi server Ollama. Pastikan Ollama berjalan di localhost:11434. Error: {e.reason}"
         except Exception as e:

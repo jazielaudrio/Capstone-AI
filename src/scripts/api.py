@@ -89,6 +89,7 @@ class AnomalyResponse(BaseModel):
 
 class ChatRequest(BaseModel):
     user_message: str
+    context_data: str = None
 
 class ChatResponse(BaseModel):
     reply: str
@@ -178,7 +179,10 @@ def predict_anomaly(request: AnomalyRequest):
 @app.post("/api/v1/finance/chat", response_model=ChatResponse, tags=["Finance AI"])
 def chat_finance(request: ChatRequest):
     if not chatbot_ready: raise HTTPException(status_code=500, detail="Chatbot module is offline.")
-    jawaban = bot_instance.chat(request.user_message)
+    if request.context_data:
+        jawaban = bot_instance.chat_with_context(request.user_message, request.context_data)
+    else:
+        jawaban = bot_instance.chat(request.user_message)
     return {"reply": jawaban}
 
 # --- FITUR 4: BUDGET FORECAST ---
